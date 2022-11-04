@@ -3,9 +3,9 @@
 import random
 
 # List of lists. 6 lists that contain a list of 6 spaces
-Player_Board = [['  '] * 6 for x in range(6)]
-Computer_Board = [['  '] * 6 for x in range(6)]
-Comp_Ship_Board = [['  '] * 6 for x in range(6)]
+Player_Board = [['  '] * 6 for x in range(5)]
+Computer_Board = [['  '] * 6 for x in range(5)]
+Comp_Ship_Board = [['  '] * 6 for x in range(5)]
 
 
 def welcome():
