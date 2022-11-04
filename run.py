@@ -1,7 +1,11 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
-Player_Board = [[''] * 6 for x in range(6)]
-Computer_Board = [[''] * 6 for x in range(6)]
+import random
+
+# List of lists. 6 lists that contain a list of 6 spaces
+Player_Board = [['  '] * 6 for x in range(6)]
+Computer_Board = [['  '] * 6 for x in range(6)]
+Comp_Ship_Board = [['  '] * 6 for x in range(6)]
 
 
 def welcome():
@@ -21,17 +25,26 @@ def print_board(board, name):
     print('   A   B   C   D   E')
     row_number = 1
     for row in board:
-        print(row_number, "   |".join(row))
+        print(row_number, " |".join(row))
         row_number += 1
 
 
-def generate_ships():
+def generate_ships(board):
     """
     Generate random coordinates for ships to put on player and computer board
     """
-    pass
+    for i in range(5):
+        ran_row = random.randint(0, 4)
+        ran_col = random.randint(0, 4)
+        board[ran_row][ran_col] = " 0"
+        # col_num.append(ran_col)
+        # row_num.append(ran_row)
+    # return row_num, col_num
 
 
 name = welcome()
+generate_ships(Player_Board)
+generate_ships(Comp_Ship_Board)
 print_board(Player_Board, name)
-print_board(Player_Board, "Computer")
+print_board(Computer_Board, "Computer")
+print_board(Comp_Ship_Board, "Hidden")
