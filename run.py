@@ -36,6 +36,9 @@ def generate_ships(board):
     for i in range(5):
         ran_row = random.randint(0, 4)
         ran_col = random.randint(0, 4)
+        while board[ran_col][ran_row] == " 0":
+            ran_row = random.randint(0, 4)
+            ran_col = random.randint(0, 4)
         board[ran_row][ran_col] = " 0"
         # col_num.append(ran_col)
         # row_num.append(ran_row)
