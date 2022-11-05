@@ -50,11 +50,19 @@ def user_guess():
     Requests users guess
     """
     print("\nYour turn, enter coordinates you'd like to strike")
-    answer = input("Enter a column letter between A-E:\n").upper()
-    while answer not in "ABCDE":
+    column = input("Enter a column letter between A-E:\n").upper()
+    while column not in "ABCDE":
         print("You input an invalid column letter")
-        answer = input("Enter a column letter between A-E:\n").upper()
-    print(answer) 
+        column = input("Enter a column letter between A-E:\n").upper()
+
+    row = input("\nEnter a row number between 1-5:\n")
+    while row not in "12345":
+        print("You input an invalid row number")
+        row = input("Enter a row number between 1-5:\n")
+    row = int(row)
+    row -= 1
+    print(row)
+    print(column)
     
 
 name = welcome()
