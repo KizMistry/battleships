@@ -45,9 +45,22 @@ def generate_ships(board):
     # return row_num, col_num
 
 
+def user_guess():
+    """
+    Requests users guess
+    """
+    print("\nYour turn, enter coordinates you'd like to strike")
+    answer = input("Enter a column letter between A-E:\n").upper()
+    while answer not in "ABCDE":
+        print("You input an invalid column letter")
+        answer = input("Enter a column letter between A-E:\n").upper()
+    print(answer) 
+    
+
 name = welcome()
 generate_ships(Player_Board)
 generate_ships(Comp_Ship_Board)
 print_board(Player_Board, name)
 print_board(Computer_Board, "Computer")
 print_board(Comp_Ship_Board, "Hidden")
+user_guess()
