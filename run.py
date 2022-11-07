@@ -61,9 +61,18 @@ def user_guess():
         row = input("Enter a row number between 1-5:\n")
     row = int(row)
     row -= 1
-    print(row)
-    print(column)
-    
+    return column, row
+
+
+def board_check(board, column, row):
+    """
+    Check the board against the users coordinates input
+    """
+    if board[column][range] == " 0":
+        board[column][range] = " X"
+    else:
+        board[column][range] = " -"
+
 
 name = welcome()
 generate_ships(Player_Board)
@@ -71,4 +80,7 @@ generate_ships(Comp_Ship_Board)
 print_board(Player_Board, name)
 print_board(Computer_Board, "Computer")
 print_board(Comp_Ship_Board, "Hidden")
-user_guess()
+row = user_guess()
+# print(column)
+print(row)
+# board_check(Comp_Ship_Board, column, row)
