@@ -7,7 +7,8 @@ Player_Board = [['  '] * 6 for x in range(5)]
 Computer_Board = [['  '] * 6 for x in range(5)]
 Comp_Ship_Board = [['  '] * 6 for x in range(5)]
 
-# Changes letters to numbers for the users input
+# 
+user_score = 0
 
 
 def welcome():
@@ -38,7 +39,7 @@ def generate_ships(board):
     for i in range(5):
         ran_row = random.randint(0, 4)
         ran_col = random.randint(0, 4)
-        while board[ran_col][ran_row] == " 0":
+        while board[ran_row][ran_col] == " 0":
             ran_row = random.randint(0, 4)
             ran_col = random.randint(0, 4)
         board[ran_row][ran_col] = " 0"
@@ -64,25 +65,29 @@ def user_guess():
         row = input("Enter a row number between 1-5:\n")
     row = int(row)
     row -= 1
-    return column, row
+    board_check(Comp_Ship_Board, row, column)
 
 
-def board_check(board, column, row):
+def board_check(board, row, column):
     """
     Check the board against the users coordinates input
     """
+    global user_score
     if board[row][column] == " 0":
         board[row][column] = " X"
         print_board(Player_Board, name)
         print_board(Computer_Board, "Computer")
         print_board(Comp_Ship_Board, "Hidden")
         print("\nBang! You hit a ship!")
+        user_score += 1
     else:
         board[row][column] = " -"
         print_board(Player_Board, name)
         print_board(Computer_Board, "Computer")
         print_board(Comp_Ship_Board, "Hidden")
         print("\nSplash.. unlucky, you missed!")
+    if user_score < 5:
+        user_guess()
 
 
 name = welcome()
@@ -91,8 +96,9 @@ generate_ships(Comp_Ship_Board)
 print_board(Player_Board, name)
 print_board(Computer_Board, "Computer")
 print_board(Comp_Ship_Board, "Hidden")
-column, row = user_guess()
+user_guess()
+# row, column = user_guess()
 # print(column)
 # print(row)
 # print(user_guess)
-board_check(Comp_Ship_Board, column, row)
+# board_check(Comp_Ship_Board, row, column)
