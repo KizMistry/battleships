@@ -71,10 +71,10 @@ def board_check(board, column, row):
     """
     Check the board against the users coordinates input
     """
-    if board[column][range] == " 0":
-        board[column][range] = " X"
+    if board[row][column] == " 0":
+        board[row][column] = " X"
     else:
-        board[column][range] = " -"
+        board[row][column] = " -"
 
 
 name = welcome()
@@ -84,7 +84,10 @@ print_board(Player_Board, name)
 print_board(Computer_Board, "Computer")
 print_board(Comp_Ship_Board, "Hidden")
 column, row = user_guess()
-print(column)
-print(row)
+# print(column)
+# print(row)
 # print(user_guess)
-# board_check(Comp_Ship_Board, column, row)
+board_check(Comp_Ship_Board, column, row)
+print_board(Player_Board, name)
+print_board(Computer_Board, "Computer")
+print_board(Comp_Ship_Board, "Hidden")
