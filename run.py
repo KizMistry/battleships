@@ -7,6 +7,8 @@ Player_Board = [['  '] * 6 for x in range(5)]
 Computer_Board = [['  '] * 6 for x in range(5)]
 Comp_Ship_Board = [['  '] * 6 for x in range(5)]
 
+# Changes letters to numbers for the users input
+
 
 def welcome():
     """
@@ -54,7 +56,8 @@ def user_guess():
     while column not in "ABCDE":
         print("You input an invalid column letter")
         column = input("Enter a column letter between A-E:\n").upper()
-
+    column = ord(column) - 65
+    
     row = input("\nEnter a row number between 1-5:\n")
     while row not in "12345":
         print("You input an invalid row number")
@@ -80,7 +83,8 @@ generate_ships(Comp_Ship_Board)
 print_board(Player_Board, name)
 print_board(Computer_Board, "Computer")
 print_board(Comp_Ship_Board, "Hidden")
-row = user_guess()
-# print(column)
+column, row = user_guess()
+print(column)
 print(row)
+# print(user_guess)
 # board_check(Comp_Ship_Board, column, row)
