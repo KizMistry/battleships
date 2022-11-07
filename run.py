@@ -73,8 +73,16 @@ def board_check(board, column, row):
     """
     if board[row][column] == " 0":
         board[row][column] = " X"
+        print_board(Player_Board, name)
+        print_board(Computer_Board, "Computer")
+        print_board(Comp_Ship_Board, "Hidden")
+        print("\nBang! You hit a ship!")
     else:
         board[row][column] = " -"
+        print_board(Player_Board, name)
+        print_board(Computer_Board, "Computer")
+        print_board(Comp_Ship_Board, "Hidden")
+        print("\nSplash.. unlucky, you missed!")
 
 
 name = welcome()
@@ -88,6 +96,3 @@ column, row = user_guess()
 # print(row)
 # print(user_guess)
 board_check(Comp_Ship_Board, column, row)
-print_board(Player_Board, name)
-print_board(Computer_Board, "Computer")
-print_board(Comp_Ship_Board, "Hidden")
