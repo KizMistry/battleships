@@ -7,7 +7,7 @@ Player_Board = [['  '] * 6 for x in range(5)]
 Computer_Board = [['  '] * 6 for x in range(5)]
 Comp_Ship_Board = [['  '] * 6 for x in range(5)]
 
-# 
+#
 user_score = 0
 comp_score = 0
 
@@ -59,7 +59,7 @@ def user_guess():
         print("You input an invalid column letter")
         column = input("Enter a column letter between A-E:\n").upper()
     column = ord(column) - 65
-    
+
     row = input("\nEnter a row number between 1-5:\n")
     while row not in "12345":
         print("You input an invalid row number")
@@ -80,18 +80,18 @@ def board_check(board, row, column):
         print_board(Player_Board, name)
         print_board(Computer_Board, "Computer")
         print_board(Comp_Ship_Board, "Hidden")
-        print("\nBang! You hit a ship!")
+        print("\nBang! You hit a ship!\n")
         user_score += 1
-        if input("Hit enter to play or type 'exit' to quit").upper() == "Exit":
-            print("quiter")
     else:
         board[row][column] = " -"
         Computer_Board[row][column] = " -"
         print_board(Player_Board, name)
         print_board(Computer_Board, "Computer")
         print_board(Comp_Ship_Board, "Hidden")
-        print("\nSplash.. unlucky, you missed!")
+        print("\nSplash.. unlucky, you missed!\n")
     if user_score < 5:
+        if input("Hit enter to play/ type 'exit' to quit\n").upper() == "EXIT":
+            print("\nQuiter!")
         comp_guess()
         user_guess()
 
@@ -116,6 +116,8 @@ def comp_guess():
         print_board(Player_Board, name)
         print_board(Computer_Board, "Computer")
         print_board(Comp_Ship_Board, "Hidden")
+    if input("Hit enter to play/ type 'exit' to quit\n").upper() == "EXIT":
+        print("\nQuiter!")
 
 
 name = welcome()
