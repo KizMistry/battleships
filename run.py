@@ -90,7 +90,6 @@ def board_check(board, row, column):
         print_board(Comp_Ship_Board, "Hidden")
         print("\nSplash.. unlucky, you missed!\n")
     if user_score < 5:
-        play_on()
         comp_guess()
         user_guess()
 
@@ -100,7 +99,8 @@ def comp_guess():
     Computer will generate a random guess after player has a turn
     """
     global comp_score
-    print("\nComputer's turn... \n")
+    print("Computers turn... \n")
+    input("Hit Enter to continue\n")
     row, column = random.randint(0, 4), random.randint(0, 4)
     if Player_Board[row][column] == " 0":
         Player_Board[row][column] = " X"
@@ -124,13 +124,13 @@ def play_on():
     """
     global comp_score, user_score, name
     if input("Hit enter to play / type 'exit' to quit\n").upper() == "EXIT":
-        print(f"Thanks for playing, the scores ended: \
-            {name}: {user_score} | Computer: {comp_score}")
+        print("Thanks for playing, the scores ended:")
+        print(f"{name}: {user_score} | Computer: {comp_score}")
         while True:
             if input("\nWould you like to play again? Enter y/n\n").upper()\
                  == "Y":
                 main()
-            elif input("\nWould you like to play again? Enter y/n\n").upper() \
+            elif input("\nWould you like to play again? Enter y/n\n").upper()\
                     == "N":
                 print("\nGoodbye!")
                 exit()
