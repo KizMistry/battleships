@@ -90,8 +90,7 @@ def board_check(board, row, column):
         print_board(Comp_Ship_Board, "Hidden")
         print("\nSplash.. unlucky, you missed!\n")
     if user_score < 5:
-        if input("Hit enter to play/ type 'exit' to quit\n").upper() == "EXIT":
-            print("\nQuiter!")
+        play_on()
         comp_guess()
         user_guess()
 
@@ -116,19 +115,46 @@ def comp_guess():
         print_board(Player_Board, name)
         print_board(Computer_Board, "Computer")
         print_board(Comp_Ship_Board, "Hidden")
-    if input("Hit enter to play/ type 'exit' to quit\n").upper() == "EXIT":
-        print("\nQuiter!")
+    play_on()
 
 
-name = welcome()
-generate_ships(Player_Board)
-generate_ships(Comp_Ship_Board)
-print_board(Player_Board, name)
-print_board(Computer_Board, "Computer")
-print_board(Comp_Ship_Board, "Hidden")
-user_guess()
+def play_on():
+    """
+    Asks the user if they would like to continue or exit
+    """
+    global comp_score, user_score, name
+    if input("Hit enter to play / type 'exit' to quit\n").upper() == "EXIT":
+        print(f"Thanks for playing, the scores ended: \
+            {name}: {user_score} | Computer: {comp_score}")
+        while True:
+            if input("\nWould you like to play again? Enter y/n\n").upper()\
+                 == "Y":
+                main()
+            elif input("\nWould you like to play again? Enter y/n\n").upper() \
+                    == "N":
+                print("\nGoodbye!")
+                exit()
+            else:
+                print("\nInvalid input, enter y or n")
+
+
+def main():
+    """
+    Runs all main functions
+    """
+    global name
+    name = welcome()
+    generate_ships(Player_Board)
+    generate_ships(Comp_Ship_Board)
+    print_board(Player_Board, name)
+    print_board(Computer_Board, "Computer")
+    print_board(Comp_Ship_Board, "Hidden")
+    user_guess()
 # row, column = user_guess()
 # print(column)
 # print(row)
 # print(user_guess)
 # board_check(Comp_Ship_Board, row, column)
+
+
+main()
