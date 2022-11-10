@@ -83,21 +83,20 @@ def board_check(board, row, column):
     if board[row][column] == " 0":
         board[row][column] = " X"
         Computer_Board[row][column] = " X"
-        print_board(Player_Board, name)
-        print_board(Computer_Board, "Computer")
-        print_board(Comp_Ship_Board, "Hidden")
+        update_board()
         print("\nBang! You hit a ship!\n")
         user_score += 1
     else:
         board[row][column] = " -"
         Computer_Board[row][column] = " -"
-        print_board(Player_Board, name)
-        print_board(Computer_Board, "Computer")
-        print_board(Comp_Ship_Board, "Hidden")
+        update_board()
         print("\nSplash.. unlucky, you missed!\n")
     if user_score < 5:
         comp_guess()
         user_guess()
+    else:
+        print("Woah, you just destroyed the computers\
+            last ship and won the battle!")
 
 
 def comp_guess():
@@ -112,15 +111,11 @@ def comp_guess():
         Player_Board[row][column] = " X"
         comp_score += 1
         print("Boom! The computer just hit your ship!\n")
-        print_board(Player_Board, name)
-        print_board(Computer_Board, "Computer")
-        print_board(Comp_Ship_Board, "Hidden")
+        update_board()
     else:
         Player_Board[row][column] = " -"
         print("Plop... The computer missed!\n")
-        print_board(Player_Board, name)
-        print_board(Computer_Board, "Computer")
-        print_board(Comp_Ship_Board, "Hidden")
+        update_board()
     play_on()
 
 
@@ -129,7 +124,7 @@ def play_on():
     Asks the user if they would like to continue or exit
     """
     global comp_score, user_score, name
-    if input("Hit enter to play / type 'exit' to quit\n").upper() == "EXIT":
+    if input("\nHit enter to play / type 'exit' to quit").upper() == "EXIT":
         print("Thanks for playing, the scores ended:")
         print(f"{name}: {user_score} | Computer: {comp_score}")
         while True:
@@ -156,11 +151,6 @@ def main():
     print_board(Computer_Board, "Computer")
     print_board(Comp_Ship_Board, "Hidden")
     user_guess()
-# row, column = user_guess()
-# print(column)
-# print(row)
-# print(user_guess)
-# board_check(Comp_Ship_Board, row, column)
 
 
 main()
