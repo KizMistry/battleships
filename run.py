@@ -33,6 +33,15 @@ def print_board(board, name):
         row_number += 1
 
 
+def update_board():
+    """
+    Calls print_board function with updated info
+    """
+    print_board(Player_Board, name)
+    print_board(Computer_Board, "Computer")
+    print_board(Comp_Ship_Board, "Hidden")
+
+
 def generate_ships(board):
     """
     Generate random coordinates for ships to put on player and computer board
@@ -44,9 +53,6 @@ def generate_ships(board):
             ran_row = random.randint(0, 4)
             ran_col = random.randint(0, 4)
         board[ran_row][ran_col] = " 0"
-        # col_num.append(ran_col)
-        # row_num.append(ran_row)
-    # return row_num, col_num
 
 
 def user_guess():
