@@ -17,7 +17,7 @@ def welcome():
     Welcome message and name request
     """
     print("Welcome to BattleShips")
-    name = input("Please enter your name: ")
+    name = input("Please enter your name:\n")
     return name
 
 
@@ -86,11 +86,13 @@ def board_check(board, row, column):
         update_board()
         print("\nBang! You hit a ship!\n")
         user_score += 1
-    else:
+    elif board[row][column] == "  ":
         board[row][column] = " -"
         Computer_Board[row][column] = " -"
         update_board()
         print("\nSplash.. unlucky, you missed!\n")
+    else:
+        print("You have already cleared this area")
     if user_score < 5:
         comp_guess()
         user_guess()
@@ -124,7 +126,7 @@ def play_on():
     Asks the user if they would like to continue or exit
     """
     global comp_score, user_score, name
-    if input("\nHit enter to play / type 'exit' to quit").upper() == "EXIT":
+    if input("\nHit enter to play / type 'exit' to quit\n").upper() == "EXIT":
         print("Thanks for playing, the scores ended:")
         print(f"{name}: {user_score} | Computer: {comp_score}")
         while True:
@@ -147,9 +149,7 @@ def main():
     name = welcome()
     generate_ships(Player_Board)
     generate_ships(Comp_Ship_Board)
-    print_board(Player_Board, name)
-    print_board(Computer_Board, "Computer")
-    print_board(Comp_Ship_Board, "Hidden")
+    update_board()
     user_guess()
 
 
