@@ -93,12 +93,14 @@ def board_check(board, row, column):
         print("\nSplash.. unlucky, you missed!\n")
     else:
         print("You have already cleared this area")
+        user_guess()
     if user_score < 5:
         comp_guess()
         user_guess()
     else:
         print("Woah, you just destroyed the computers\
             last ship and won the battle!")
+        play_on()
 
 
 def comp_guess():
@@ -118,7 +120,6 @@ def comp_guess():
         Player_Board[row][column] = " -"
         print("Plop... The computer missed!\n")
         update_board()
-    play_on()
 
 
 def play_on():
@@ -129,16 +130,22 @@ def play_on():
     if input("\nHit enter to play / type 'exit' to quit\n").upper() == "EXIT":
         print("Thanks for playing, the scores ended:")
         print(f"{name}: {user_score} | Computer: {comp_score}")
-        while True:
-            if input("\nWould you like to play again? Enter y/n\n").upper()\
-                 == "Y":
-                main()
-            elif input("\nWould you like to play again? Enter y/n\n").upper()\
-                    == "N":
-                print("\nGoodbye!")
-                exit()
-            else:
-                print("\nInvalid input, enter y or n")
+        yesNo = input("\nWould you like to play again? Enter y/n\n").upper()
+        if yesNo == "Y":
+            new_game()
+        elif yesNo == "N":
+            print("\nGoodbye!")
+            exit()
+        else:
+            print("\nInvalid input, enter y or n")
+
+    
+def new_game():
+    global Player_Board, Computer_Board, Comp_Ship_Board
+    Player_Board = [['  '] * 6 for x in range(5)]
+    Computer_Board = [['  '] * 6 for x in range(5)]
+    Comp_Ship_Board = [['  '] * 6 for x in range(5)]
+    main()
 
 
 def main():
