@@ -102,8 +102,8 @@ def board_check(board, row, column):
         comp_guess()
         user_guess()
     else:
-        print("Kaboom!, you just destroyed the computers\
-            last ship and won the battle!")
+        print("Kaboom! You just destroyed the computers\n"
+              "last ship and won the battle!")
         play_on()
 
 
