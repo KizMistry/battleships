@@ -130,21 +130,27 @@ def play_on():
     if input("\nHit enter to play / type 'exit' to quit\n").upper() == "EXIT":
         print("Thanks for playing, the scores ended:")
         print(f"{name}: {user_score} | Computer: {comp_score}")
-        yesNo = input("\nWould you like to play again? Enter y/n\n").upper()
-        if yesNo == "Y":
+        yesNo = input("\nAre you sure you want to quit? y/n\n").upper()
+        while yesNo not in "YN":
+            print("\nInvalid input, please enter Y or N")
+            yesNo = input("\nAre you sure you want to quit? Y/N\n").upper()
+        if yesNo == "N":
             new_game()
-        elif yesNo == "N":
-            print("\nGoodbye!")
+        elif yesNo == "Y":
+            print("\nGood game, Cya!")
             exit()
-        else:
-            print("\nInvalid input, enter y or n")
+    else:
+        new_game()
 
     
 def new_game():
-    global Player_Board, Computer_Board, Comp_Ship_Board
+    global Player_Board, Computer_Board, Comp_Ship_Board, \
+     comp_score, user_score
     Player_Board = [['  '] * 6 for x in range(5)]
     Computer_Board = [['  '] * 6 for x in range(5)]
     Comp_Ship_Board = [['  '] * 6 for x in range(5)]
+    user_score = 0
+    comp_score = 0
     main()
 
 
