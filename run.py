@@ -61,7 +61,7 @@ def user_guess():
     """
     enter_column = "Enter a column letter between A-E:\n"
     enter_row = "\nEnter a row number between 1-5:\n"
-    invalid_input = "Your entered input is invalid\n"
+    invalid_input = "\nYour entered input is invalid\n"
     print("\nYour turn, enter coordinates you'd like to strike")
 
     column = input(enter_column).upper()
@@ -102,7 +102,7 @@ def board_check(board, row, column):
         comp_guess()
         user_guess()
     else:
-        print("Woah, you just destroyed the computers\
+        print("Kaboom!, you just destroyed the computers\
             last ship and won the battle!")
         play_on()
 
@@ -118,12 +118,12 @@ def comp_guess():
     if Player_Board[row][column] == " 0":
         Player_Board[row][column] = " X"
         comp_score += 1
-        print("Boom! The computer just hit your ship!\n")
         update_board()
+        print("\nBoom! The computer just hit your ship!")
     else:
         Player_Board[row][column] = " -"
-        print("Plop... The computer missed!\n")
         update_board()
+        print("\nPlop... The computer missed!")
 
 
 def play_on():
