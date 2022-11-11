@@ -59,17 +59,21 @@ def user_guess():
     """
     Requests users guess
     """
+    enter_column = "Enter a column letter between A-E:\n"
+    enter_row = "\nEnter a row number between 1-5:\n"
+    invalid_input = "Your entered input is invalid\n"
     print("\nYour turn, enter coordinates you'd like to strike")
-    column = input("Enter a column letter between A-E:\n").upper()
-    while column not in "ABCDE":
-        print("You input an invalid column letter")
-        column = input("Enter a column letter between A-E:\n").upper()
+
+    column = input(enter_column).upper()
+    while column not in "ABCDE" or column == "":
+        print(invalid_input)
+        column = input(enter_column).upper()
     column = ord(column) - 65
 
-    row = input("\nEnter a row number between 1-5:\n")
-    while row not in "12345":
-        print("You input an invalid row number")
-        row = input("Enter a row number between 1-5:\n")
+    row = input(enter_row)
+    while row not in "12345" or row == "":
+        print(invalid_input)
+        row = input(enter_row)
     row = int(row)
     row -= 1
     board_check(Comp_Ship_Board, row, column)
