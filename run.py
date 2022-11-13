@@ -99,8 +99,9 @@ def board_check(board, row, column):
         print("You have already cleared this area")
         user_guess()
     if user_score < 5:
+        print("Computers turn... \n")
+        input("Hit Enter to continue\n")
         comp_guess()
-        user_guess()
     else:
         print("Kaboom! You just destroyed the computers\n"
               "last ship and won the battle!")
@@ -112,18 +113,26 @@ def comp_guess():
     Computer will generate a random guess after player has a turn
     """
     global comp_score
-    print("Computers turn... \n")
-    input("Hit Enter to continue\n")
+    # print("Computers turn... \n")
+    # input("Hit Enter to continue\n")
     row, column = random.randint(0, 4), random.randint(0, 4)
     if Player_Board[row][column] == " 0":
         Player_Board[row][column] = " X"
         comp_score += 1
         update_board()
         print("\nBoom! The computer just hit your ship!")
-    else:
+    elif Player_Board[row][column] == "  ":
         Player_Board[row][column] = " -"
         update_board()
         print("\nPlop... The computer missed!")
+    else:
+        comp_guess()
+    if comp_score == 5:
+        print("\nKaboom! The Computer just destroyed your\n"
+              "last ship and won the battle!")
+        play_on()
+    else:
+        user_guess()
 
 
 def play_on():
@@ -132,7 +141,7 @@ def play_on():
     """
     global comp_score, user_score, name
     if input("\nHit enter to play / type 'exit' to quit\n").upper() == "EXIT":
-        print("Thanks for playing, the scores ended:")
+        print("Thanks for playing, the scores this round ended:")
         print(f"{name}: {user_score} | Computer: {comp_score}")
         yesNo = input("\nAre you sure you want to quit? y/n\n").upper()
         while yesNo not in "YN":
