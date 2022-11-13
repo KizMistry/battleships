@@ -16,7 +16,12 @@ def welcome():
     """
     Welcome message and name request
     """
-    print("Welcome to BattleShips")
+    print("Welcome to BattleShips\n"
+          "\nYou will have to try and guess the location\n"
+          "of each battleship on the computers board.\n"
+          "\nA Ship is displayed as: 0\n"
+          "A Hit is displayed as: X\n"
+          "A Miss is displayed as: -\n")
     name = input("Please enter your name:\n")
     return name
 
