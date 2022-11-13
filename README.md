@@ -1,13 +1,31 @@
 ## Battleships
 -----
-In this game, the user will attempt to find all of the computers battleships before the computer finds the users battleships.
+In this game, the user will attempt to destroy all of the computers battleships before the computer finds theirs.
 
-Here is the 
+[Battleships can be found here](https://battleship.herokuapp.com/)
 ## How to play
 -----
 
 ## Features
 -----
+Welcome message, aim of game and legend.
+
+User board and Computer board generated 5x5 with 5 randomly placed ships
+
+user inputs there guesses
+
+input validation to make sure input will accept
+need 1 letter between A-E to progress
+need 1 number between 1-5 to progress
+coordinates can't be guessed twice
+
+Future features
+
+user can choose board size
+user can choose number of ships
+best of 3
+ships larger than 1 space
+user can place own ships
 
 ## Data Model
 -----
