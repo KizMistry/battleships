@@ -65,13 +65,13 @@ def user_guess():
     print("\nYour turn, enter coordinates you'd like to strike")
 
     column = input(enter_column).upper()
-    while column not in "ABCDE" or column == "":
+    while column not in "ABCDE" or column == "" or len(column) > 1:
         print(invalid_input)
         column = input(enter_column).upper()
     column = ord(column) - 65
 
     row = input(enter_row)
-    while row not in "12345" or row == "":
+    while row not in "12345" or row == "" or len(row) > 1:
         print(invalid_input)
         row = input(enter_row)
     row = int(row)
