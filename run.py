@@ -7,14 +7,14 @@ Player_Board = [['  '] * 6 for x in range(5)]
 Computer_Board = [['  '] * 6 for x in range(5)]
 Comp_Ship_Board = [['  '] * 6 for x in range(5)]
 
-#
+# Score Trackers
 user_score = 0
 comp_score = 0
 
 
 def welcome():
     """
-    Welcome message and name request
+    Welcome message, game description and name request
     """
     print("Welcome to BattleShips\n"
           "\nThe Objective is to guess the location\n"
@@ -24,6 +24,8 @@ def welcome():
           "A Hit is displayed as: X\n"
           "A Miss is displayed as: -\n")
     name = input("Please enter your name:\n")
+    while name == "" or len(name) > 10:
+        name = input("Please enter a username (10 characters max)\n")
     return name
 
 
