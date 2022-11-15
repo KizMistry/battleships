@@ -3,9 +3,9 @@
 import random
 
 # List of lists. 6 lists that contain a list of 6 spaces
-Player_Board = [['  '] * 6 for x in range(5)]
-Computer_Board = [['  '] * 6 for x in range(5)]
-Comp_Ship_Board = [['  '] * 6 for x in range(5)]
+player_board = [["  "] * 6 for x in range(5)]
+computer_board = [["  "] * 6 for x in range(5)]
+comp_ship_board = [["  "] * 6 for x in range(5)]
 
 # Score Trackers
 user_score = 0
@@ -16,13 +16,15 @@ def welcome():
     """
     Welcome message, game description and name request
     """
-    print("Welcome to BattleShips\n"
-          "\nThe Objective is to guess the location\n"
-          "of each battleship on the computers board\n"
-          "before the computer guesses yours.\n"
-          "\nA Ship is displayed as: 0\n"
-          "A Hit is displayed as: X\n"
-          "A Miss is displayed as: -\n")
+    print(
+        "Welcome to BattleShips\n"
+        "\nThe Objective is to guess the location\n"
+        "of each battleship on the computers board\n"
+        "before the computer guesses yours.\n"
+        "\nA Ship is displayed as: 0\n"
+        "A Hit is displayed as: X\n"
+        "A Miss is displayed as: -\n"
+    )
     name = input("Please enter your name:\n")
     while name == "" or len(name) > 10:
         name = input("Please enter a username (10 characters max)\n")
@@ -34,20 +36,20 @@ def print_board(board, name):
     Creates a board for the player and computer
     """
     print(f"\n   {name}'s Board")
-    print('   A   B   C   D   E')
+    print("   A   B   C   D   E")
     row_number = 1
     for row in board:
         print(row_number, " |".join(row))
         row_number += 1
 
 
-def update_board():
+def update_board(name):
     """
     Calls print_board function with updated info
     """
-    print_board(Player_Board, name)
-    print_board(Computer_Board, "Computer")
-    print_board(Comp_Ship_Board, "Hidden")
+    print_board(player_board, name)
+    print_board(computer_board, "Computer")
+    print_board(comp_ship_board, "Hidden")
 
 
 def generate_ships(board):
@@ -63,7 +65,7 @@ def generate_ships(board):
         board[ran_row][ran_col] = " 0"
 
 
-def user_guess():
+def user_guess(name):
     """
     Requests users guess
     """
@@ -84,70 +86,71 @@ def user_guess():
         row = input(enter_row)
     row = int(row)
     row -= 1
-    board_check(Comp_Ship_Board, row, column)
+    board_check(comp_ship_board, row, column, name)
 
 
-def board_check(board, row, column):
+def board_check(board, row, column, name):
     """
     Check the board against the users coordinates input
     """
     global user_score
     if board[row][column] == " 0":
         board[row][column] = " X"
-        Computer_Board[row][column] = " X"
-        update_board()
+        computer_board[row][column] = " X"
+        update_board(name)
         print("\nBang! You hit a ship!\n")
         user_score += 1
     elif board[row][column] == "  ":
         board[row][column] = " -"
-        Computer_Board[row][column] = " -"
-        update_board()
+        computer_board[row][column] = " -"
+        update_board(name)
         print("\nSplash.. unlucky, you missed!\n")
     else:
         print("You have already cleared this area")
-        user_guess()
+        user_guess(name)
     if user_score < 5:
         print("Computers turn... \n")
         input("Hit Enter to continue\n")
-        comp_guess()
+        comp_guess(name)
     else:
-        print("Kaboom! You just destroyed the computers\n"
-              "last ship and won the battle!")
-        play_on()
+        print(
+            """Kaboom! You just destroyed the computers\n
+            last ship and won the battle!""")
+        play_on(name)
 
 
-def comp_guess():
+def comp_guess(name):
     """
     Computer will generate a random guess after player has a turn
     """
     global comp_score
-    # print("Computers turn... \n")
-    # input("Hit Enter to continue\n")
     row, column = random.randint(0, 4), random.randint(0, 4)
-    if Player_Board[row][column] == " 0":
-        Player_Board[row][column] = " X"
+    if player_board[row][column] == " 0":
+        player_board[row][column] = " X"
         comp_score += 1
-        update_board()
+        update_board(name)
         print("\nBoom! The computer just hit your ship!")
-    elif Player_Board[row][column] == "  ":
-        Player_Board[row][column] = " -"
-        update_board()
+    elif player_board[row][column] == "  ":
+        player_board[row][column] = " -"
+        update_board(name)
         print("\nPlop... The computer missed!")
     else:
-        comp_guess()
+        comp_guess(name)
     if comp_score == 5:
-        print("\nKaboom! The Computer just destroyed your\n"
-              "last ship and won the battle!")
-        play_on()
+        print(
+            "\nKaboom! The Computer just destroyed your\n"
+            "last ship and won the battle!"
+        )
+        play_on(name)
     else:
-        user_guess()
+        user_guess(name)
 
 
-def play_on():
+def play_on(name):
     """
     Asks the user if they would like to continue or exit
     """
-    global comp_score, user_score, name
+    global comp_score, user_score
     if input("\nHit enter to play / type 'exit' to quit\n").upper() == "EXIT":
         print("Thanks for playing, the scores this round ended:")
         print(f"{name}: {user_score} | Computer: {comp_score}")
@@ -163,13 +166,13 @@ def play_on():
     else:
         new_game()
 
-    
+
 def new_game():
-    global Player_Board, Computer_Board, Comp_Ship_Board, \
-     comp_score, user_score
-    Player_Board = [['  '] * 6 for x in range(5)]
-    Computer_Board = [['  '] * 6 for x in range(5)]
-    Comp_Ship_Board = [['  '] * 6 for x in range(5)]
+    global player_board, computer_board, comp_ship_board, comp_score, \
+        user_score
+    player_board = [["  "] * 6 for x in range(5)]
+    computer_board = [["  "] * 6 for x in range(5)]
+    comp_ship_board = [["  "] * 6 for x in range(5)]
     user_score = 0
     comp_score = 0
     main()
@@ -179,12 +182,11 @@ def main():
     """
     Runs all main functions
     """
-    global name
     name = welcome()
-    generate_ships(Player_Board)
-    generate_ships(Comp_Ship_Board)
-    update_board()
-    user_guess()
+    generate_ships(player_board)
+    generate_ships(comp_ship_board)
+    update_board(name)
+    user_guess(name)
 
 
 main()
