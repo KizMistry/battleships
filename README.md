@@ -62,14 +62,19 @@ The winner is the first to hit all opponents battleships.
 I have tested the Battleship game with the following tests:
 | Test       | Expected           | Passed  |
 | :------------- |:-------------:| :-----:|
-| User clicks 'How To Play' button      | Modal opens | ✅ |
-| User clicks 'x' button in the modal      | Modal closes | ✅ |
-| User clicks outside modal area (while modal is open)| Modal closes | ✅ |
-| User clicks 'Play' button before selecting hand     | An alert appears telling the user to select a hand      |   ✅ |
-| User clicks any of the hand buttons | Border turns green and their hand displays in the users pick area       | ✅ |
-| User clicks 'Play' button after selecting hand | Game runs, random hand generated and displayed,<br> correct results message displays and scores updated | ✅  |
-| User clicks 'Reset' button | An alert appears and the scores, user pick, computer pick,<br> results message, and hand selections are reset to defualt | ✅  |
-| Responsiveness of each screen size  | Each section and button adjusted size to fit all device displays |  ✅ |
+| Enter a valid username      | Username printed to users board | ✅ |
+| Enter without inputting username      | Error message requesting username and input field | ✅ |
+| Enter username longer than 10 characters | Error message requesting username and input field | ✅ |
+| Enter without inputting column letter or row number     | Error message requesting column/row and input field      |   ✅ |
+| Enter a number into the column input | Error message requesting column and input field      | ✅ |
+| Enter more than one letter/number | Error message requesting column and input field | ✅  |
+| Enter letter/number that's not within the board | Error message requesting column and input field | ✅  |
+| Enter coordinates previously entered  | Error message requesting column and input field |  ✅ |
+| If all computer ships or user ships are hit  | Game finishes and an option to play again |  ✅ |
+| Press 'Enter' to play again  | Game resets and runs again |  ✅ |
+| Enter 'exit' to quit | Game ends with message and asks if certain |  ✅ |
+| Enter 'y' to quit | python program exits |  ✅ |
+| Enter 'n' to play again | Game resets and runs again |  ✅ |
 
 ## Deployment
 -----
