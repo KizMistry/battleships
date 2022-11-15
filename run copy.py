@@ -1,5 +1,3 @@
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 import random
 
 # List of lists. 6 lists that contain a list of 6 spaces
@@ -65,7 +63,7 @@ def generate_ships(board):
         board[ran_row][ran_col] = " 0"
 
 
-def user_guess(name):
+def user_guess(name, user_score, comp_score):
     """
     Requests users guess
     """
@@ -86,14 +84,13 @@ def user_guess(name):
         row = input(enter_row)
     row = int(row)
     row -= 1
-    board_check(comp_ship_board, row, column, name)
+    board_check(comp_ship_board, row, column, name, user_score, comp_score)
 
 
-def board_check(board, row, column, name):
+def board_check(board, row, column, name, user_score, comp_score):
     """
     Check the board against the users coordinates input
     """
-    global user_score
     if board[row][column] == " 0":
         board[row][column] = " X"
         computer_board[row][column] = " X"
@@ -107,23 +104,23 @@ def board_check(board, row, column, name):
         print("\nSplash.. unlucky, you missed!\n")
     else:
         print("You have already cleared this area")
-        user_guess(name)
+        user_guess(name, user_score, comp_score)
     if user_score < 5:
         print("Computers turn... \n")
         input("Hit Enter to continue\n")
-        comp_guess(name)
+        comp_guess(name, user_score, comp_score)
     else:
         print(
             """Kaboom! You just destroyed the computers\n
-            last ship and won the battle!""")
-        play_on(name)
+            last ship and won the battle!"""
+        )
+        play_on(name, user_score, comp_score)
 
 
-def comp_guess(name):
+def comp_guess(name, user_score, comp_score):
     """
     Computer will generate a random guess after player has a turn
     """
-    global comp_score
     row, column = random.randint(0, 4), random.randint(0, 4)
     if player_board[row][column] == " 0":
         player_board[row][column] = " X"
@@ -135,27 +132,26 @@ def comp_guess(name):
         update_board(name)
         print("\nPlop... The computer missed!")
     else:
-        comp_guess(name)
+        comp_guess(name, user_score, comp_score)
     if comp_score == 5:
         print(
             "\nKaboom! The Computer just destroyed your\n"
             "last ship and won the battle!"
         )
-        play_on(name)
+        play_on(name, user_score, comp_score)
     else:
-        user_guess(name)
+        user_guess(name, user_score, comp_score)
 
 
-def play_on(name):
+def play_on(name, user_score, comp_score):
     """
     Asks the user if they would like to continue or exit
     """
-    global comp_score, user_score
     if input("\nHit enter to play / type 'exit' to quit\n").upper() == "EXIT":
         print("Thanks for playing, the scores this round ended:")
         print(f"{name}: {user_score} | Computer: {comp_score}")
         yesNo = input("\nAre you sure you want to quit? y/n\n").upper()
-        while yesNo not in "YN":
+        while yesNo not in "YN" or yesNo == "" or len(yesNo) > 1:
             print("\nInvalid input, please enter Y or N")
             yesNo = input("\nAre you sure you want to quit? Y/N\n").upper()
         if yesNo == "N":
@@ -175,10 +171,10 @@ def new_game():
     comp_ship_board = [["  "] * 6 for x in range(5)]
     user_score = 0
     comp_score = 0
-    main()
+    main(user_score, comp_score)
 
 
-def main():
+def main(user_score, comp_score):
     """
     Runs all main functions
     """
@@ -186,7 +182,7 @@ def main():
     generate_ships(player_board)
     generate_ships(comp_ship_board)
     update_board(name)
-    user_guess(name)
+    user_guess(name, user_score, comp_score)
 
 
-main()
+main(user_score, comp_score)
