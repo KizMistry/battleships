@@ -57,6 +57,8 @@ The winner is the first to hit all opponents battleships.
 ## Data Model
 -----
 
+
+
 ## Testing
 -----
 I have tested the Battleship game with the following tests:
@@ -73,8 +75,27 @@ I have tested the Battleship game with the following tests:
 | If all computer ships or user ships are hit  | Game finishes and an option to play again |  ✅ |
 | Press 'Enter' to play again  | Game resets and runs again |  ✅ |
 | Enter 'exit' to quit | Game ends with message and asks if certain |  ✅ |
-| Enter 'y' to quit | python program exits |  ✅ |
-| Enter 'n' to play again | Game resets and runs again |  ✅ |
+| Enter 'y' for the 'Are you sure you want to quit' input| Exits the python program |  ✅ |
+| Enter 'n' for the 'Are you sure you want to quit' input | Game resets and runs again |  ✅ |
+| Enter nothing or invalid input for the 'Are you sure you want to quit' question | Error message requesting input is Y or N |  ✅ |
+
+### Bugs
+
+The Battleships game works fully as expexcted without returning any errors or bugs
+
+### Validator Testing
+
+PEP8online.com and other online validators were not available at the time of creating this application.
+All validation was done through the GitPod terminal and any problems were fixed using this method after revising the error messages.
+
+There are 3 warnings, regarding the code, I'm aware of:
+    - Redefining name 'user_score' from outer scope
+    - Redefining name 'comp_score' from outer scope
+    - Using the global statement
+
+I have not yet found a way to reset the game boards and scores without the use of the global variables that doesn't include passing all variables through all functions and it becoming extremely messy and the code not running correctly.
+
+Similar to the global variable problem, I have not found a way to update the scores using any other method.
 
 ## Deployment
 -----

@@ -164,8 +164,7 @@ def play_on(name, user_score, comp_score):
 
 
 def new_game():
-    global player_board, computer_board, comp_ship_board, comp_score, \
-        user_score
+    global player_board, computer_board, comp_ship_board, comp_score, user_score
     player_board = [["  "] * 6 for x in range(5)]
     computer_board = [["  "] * 6 for x in range(5)]
     comp_ship_board = [["  "] * 6 for x in range(5)]

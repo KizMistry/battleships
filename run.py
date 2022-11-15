@@ -47,7 +47,7 @@ def update_board(name):
     """
     print_board(player_board, name)
     print_board(computer_board, "Computer")
-    print_board(comp_ship_board, "Hidden")
+    # print_board(comp_ship_board, "Hidden")
 
 
 def generate_ships(board):
@@ -164,17 +164,20 @@ def play_on(name, user_score, comp_score):
 
 
 def new_game():
-    global player_board, computer_board, comp_ship_board, comp_score, \
+    """
+    Resets player and computer boards and scores before running the game again
+    """
+    global player_board, computer_board, comp_ship_board, comp_score,\
         user_score
     player_board = [["  "] * 6 for x in range(5)]
     computer_board = [["  "] * 6 for x in range(5)]
     comp_ship_board = [["  "] * 6 for x in range(5)]
     user_score = 0
     comp_score = 0
-    main(user_score, comp_score)
+    main()
 
 
-def main(user_score, comp_score):
+def main():
     """
     Runs all main functions
     """
@@ -185,4 +188,4 @@ def main(user_score, comp_score):
     user_guess(name, user_score, comp_score)
 
 
-main(user_score, comp_score)
+main()
