@@ -113,9 +113,9 @@ PEP8online.com and other online validators were not available at the time of cre
 All validation was done through the GitPod terminal and any problems were fixed using this method after revising the error messages.
 
 There are 3 warnings, regarding the code, I'm aware of:
-    - Redefining name 'user_score' from outer scope
-    - Redefining name 'comp_score' from outer scope
-    - Using the global statement
+- Redefining name 'user_score' from outer scope
+- Redefining name 'comp_score' from outer scope
+- Using the global statement
 
 I have not yet found a way to reset the game boards and scores without the use of the global variables that doesn't include passing all variables through all functions and it becoming extremely messy and the code not running correctly.
 
