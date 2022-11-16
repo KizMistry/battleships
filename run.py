@@ -47,7 +47,6 @@ def update_board(name):
     """
     print_board(player_board, name)
     print_board(computer_board, "Computer")
-    # print_board(comp_ship_board, "Hidden")
 
 
 def generate_ships(board):

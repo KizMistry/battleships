@@ -56,7 +56,22 @@ The winner is the first to hit all opponents battleships.
 
 ## Data Model
 -----
+To build this game I created 10 functions.
 
+I first started with creating the 3 empty boards and setting the scores to zero before the main function is called.
+
+When the main function is called it will run number of other functions in a specific order to enable the correct flow of the battleships game starting with the welcome function.
+
+The welcome function will print a welcome message and rules before requesting a username to proceed.
+Once returned, the username will be stored as the name variable and the next function will run.
+
+The generate_ships function is then called for both the players board and the computers hidden board which will randomly place 5 ships on each board.
+
+Next to be called is the update_board function which will print the boards.
+
+The user_guess function is then called which will prompt the user for their first attempt after which will move onto the board_check function before moving onto the comp_guess function.
+
+This process is repeated until the score limit is reached where the user will have the option to play again.
 
 
 ## Testing
