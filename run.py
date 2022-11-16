@@ -15,17 +15,17 @@ def welcome():
     Welcome message, game description and name request
     """
     print(
-        "Welcome to BattleShips\n"
-        "\nThe Objective is to guess the location\n"
-        "of each battleship on the computers board\n"
-        "before the computer guesses yours.\n"
-        "\nA Ship is displayed as: 0\n"
-        "A Hit is displayed as: X\n"
-        "A Miss is displayed as: -\n"
+        "  Welcome to BattleShips\n"
+        "\n  The Objective is to guess the location\n"
+        "  of each battleship on the computers board\n"
+        "  before the computer guesses yours.\n"
+        "\n  A Ship is displayed as: 0\n"
+        "  A Hit is displayed as: X\n"
+        "  A Miss is displayed as: -\n"
     )
-    name = input("Please enter your name:\n")
+    name = input("  Please enter your name:\n  ")
     while name == "" or len(name) > 10:
-        name = input("Please enter a username (10 characters max)\n")
+        name = input("  Please enter a username (10 characters max)\n  ")
     return name
 
 
@@ -66,10 +66,10 @@ def user_guess(name, user_score, comp_score):
     """
     Requests users guess
     """
-    enter_column = "Enter a column letter between A-E:\n"
-    enter_row = "\nEnter a row number between 1-5:\n"
-    invalid_input = "\nYour entered input is invalid\n"
-    print("\nYour turn, enter coordinates you'd like to strike")
+    enter_column = "  Enter a column letter between A-E:\n  "
+    enter_row = "\n  Enter a row number between 1-5:\n  "
+    invalid_input = "\n  Your entered input is invalid\n"
+    print("\n  Your turn, enter coordinates you'd like to strike")
 
     column = input(enter_column).upper()
     while column not in "ABCDE" or column == "" or len(column) > 1:
@@ -94,23 +94,23 @@ def board_check(board, row, column, name, user_score, comp_score):
         board[row][column] = " X"
         computer_board[row][column] = " X"
         update_board(name)
-        print("\nBang! You hit a ship!\n")
+        print("\n  Bang! You hit a ship!\n")
         user_score += 1
     elif board[row][column] == "  ":
         board[row][column] = " -"
         computer_board[row][column] = " -"
         update_board(name)
-        print("\nSplash.. unlucky, you missed!\n")
+        print("\n  Splash.. unlucky, you missed!\n")
     else:
-        print("You have already cleared this area")
+        print("  You have already cleared this area")
         user_guess(name, user_score, comp_score)
     if user_score < 5:
-        print("Computers turn... \n")
-        input("Hit Enter to continue\n")
+        print("  Computers turn... \n")
+        input("  Hit Enter to continue\n")
         comp_guess(name, user_score, comp_score)
     else:
         print(
-            """Kaboom! You just destroyed the computers\n
+            """  Kaboom! You just destroyed the computers\n
             last ship and won the battle!"""
         )
         play_on(name, user_score, comp_score)
@@ -125,17 +125,17 @@ def comp_guess(name, user_score, comp_score):
         player_board[row][column] = " X"
         comp_score += 1
         update_board(name)
-        print("\nBoom! The computer just hit your ship!")
+        print("\n  Boom! The computer just hit your ship!")
     elif player_board[row][column] == "  ":
         player_board[row][column] = " -"
         update_board(name)
-        print("\nPlop... The computer missed!")
+        print("\n  Plop... The computer missed!")
     else:
         comp_guess(name, user_score, comp_score)
     if comp_score == 5:
         print(
-            "\nKaboom! The Computer just destroyed your\n"
-            "last ship and won the battle!"
+            """\n  Kaboom! The Computer just destroyed your\n
+            last ship and won the battle!"""
         )
         play_on(name, user_score, comp_score)
     else:
@@ -146,17 +146,17 @@ def play_on(name, user_score, comp_score):
     """
     Asks the user if they would like to continue or exit
     """
-    if input("\nHit enter to play / type 'exit' to quit\n").upper() == "EXIT":
-        print("Thanks for playing, the scores this round ended:")
-        print(f"{name}: {user_score} | Computer: {comp_score}")
-        yesNo = input("\nAre you sure you want to quit? y/n\n").upper()
+    if input("\n Hit enter to play / type 'exit' to quit\n").upper() == "EXIT":
+        print("  Thanks for playing, the scores this round ended:")
+        print(f"  {name}: {user_score} | Computer: {comp_score}")
+        yesNo = input("\n  Are you sure you want to quit? y/n\n  ").upper()
         while yesNo not in "YN" or yesNo == "" or len(yesNo) > 1:
-            print("\nInvalid input, please enter Y or N")
-            yesNo = input("\nAre you sure you want to quit? Y/N\n").upper()
+            print("\n  Invalid input, please enter Y or N")
+            yesNo = input("\n  Are you sure you want to quit? Y/N\n  ").upper()
         if yesNo == "N":
             new_game()
         elif yesNo == "Y":
-            print("\nGood game, Cya!")
+            print("\n  Good game, Cya!")
             exit()
     else:
         new_game()
