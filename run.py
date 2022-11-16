@@ -33,12 +33,13 @@ def print_board(board, name):
     """
     Creates a board for the player and computer
     """
-    print(f"\n   {name}'s Board")
-    print("   A   B   C   D   E")
-    row_number = 1
+    print(f"\n     {name}'s Board")
+    print("     A   B   C   D   E")
+    number = 1
     for row in board:
+        row_number = "  " + str(number)
         print(row_number, " |".join(row))
-        row_number += 1
+        number += 1
 
 
 def update_board(name):
@@ -146,7 +147,8 @@ def play_on(name, user_score, comp_score):
     """
     Asks the user if they would like to continue or exit
     """
-    if input("\n Hit enter to play / type 'exit' to quit\n").upper() == "EXIT":
+    playExit = "\n  Hit enter to play / type 'exit' to quit\n  "
+    if input(playExit).upper() == "EXIT":
         print("  Thanks for playing, the scores this round ended:")
         print(f"  {name}: {user_score} | Computer: {comp_score}")
         yesNo = input("\n  Are you sure you want to quit? y/n\n  ").upper()
