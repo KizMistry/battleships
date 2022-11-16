@@ -1,9 +1,9 @@
-# Battleships
+# BattleShips
 In this game, the user will attempt to destroy all of the computers battleships before the computer finds theirs.
 
-[Battleships can be found here](https://battleship.herokuapp.com/)
+[BattleShips can be found here](https://battleship.herokuapp.com/)
 
-![Screenshot](screenshot)
+![BattleShips](/assets/images/battleships.png)
 ## How to play
 -----
 Upon starting the game, the users and computers board is generated 5 columns by 5 rows with 5 randomly placed ships.
@@ -23,16 +23,22 @@ The winner is the first to hit all opponents battleships.
 ## Features
 -----
 - Introduction message and game description.
-![intro](intro)
+
+![Welcome](/assets/images/welcome.png)
 
 - Player and Computer boards generated
     - 5 Batteships are randomly generated for each board
     - Computers ships are hidden from the user
-![board](board)
+
+![Boards](/assets/images/boards.png)
+
 - User can input their desired attacking coordinates
+
+![User Inputs](/assets/images/user_input.png)
+
 - Outcome is returned after each attempt
-![user_input](userinput)
-![outcome](outcome)
+
+![Outcome](/assets/images/outcome.png)
 
 - Input validation is performed after both user and computer attemps
     - Checks if the entered column is a single letter between A-E
@@ -41,10 +47,13 @@ The winner is the first to hit all opponents battleships.
     - Checks for duplicate guesses
     - Returns an error message if input is invalid
     - Can only progress if input is valid
-![inputval](inputval)
+
+![Input Validation](/assets/images/input_validation.png)
+
 - Play On option
     - User can choose to exit the game or play again
-![playon](playon)
+
+![Play On](/assets/images/play_on.png)
 
 ### Future features
 
@@ -60,7 +69,7 @@ To build this game I created 10 functions.
 
 I first started with creating the 3 empty boards and setting the scores to zero before the main function is called.
 
-When the main function is called it will run number of other functions in a specific order to enable the correct flow of the battleships game starting with the welcome function.
+When the main function is called it will run number of other functions in a specific order to enable the correct flow of the BattleShips game starting with the welcome function.
 
 The welcome function will print a welcome message and rules before requesting a username to proceed.
 Once returned, the username will be stored as the name variable and the next function will run.
@@ -96,7 +105,7 @@ I have tested the Battleship game with the following tests:
 
 ### Bugs
 
-The Battleships game works fully as expexcted without returning any errors or bugs
+The BattleShips game works fully as expexcted without returning any errors or bugs
 
 ### Validator Testing
 
